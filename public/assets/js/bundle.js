@@ -26,7 +26,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _bar
   \***********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ bar)\n/* harmony export */ });\nfunction bar() {\n  console.log(\"barbar\");\n}\n\n//# sourceURL=webpack://instagram_test/./src/js/bar.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ bar)\n/* harmony export */ });\nfunction bar() {\n  console.log(\"bar\");\n}\n\n//# sourceURL=webpack://instagram_test/./src/js/bar.js?");
 
 /***/ })
 

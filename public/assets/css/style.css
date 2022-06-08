@@ -4,13 +4,9 @@
 h1 {
   color: #b2b2b2;
   padding: 20px;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
 }
 
 div {
-  display: -ms-grid;
-  display: grid;
+  background: url(../../assets/images/frontgarden-icon.JPG);
+  background-size: cover;
 }

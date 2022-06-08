@@ -32,8 +32,17 @@ module.exports = {
               },
             },
           },
-          "sass-loader"
+          "sass-loader",
         ]
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg)$/i,
+        type: 'asset/resource',
+        generator:{
+          // output setting
+          // generate image in public
+          filename:'assets/images/[name][ext]',
+        }
       },
       {
         test: /\.js$/,
@@ -56,6 +65,13 @@ module.exports = {
     }),
     new RemoveEmptyScriptsPlugin(),
   ],
+  resolve: {
+		alias: {
+      // setting read path of image and variable of image path 
+      // sass use variable of image path @image
+			'@image': path.resolve(__dirname, './src/images/'),
+		},
+	},
   devServer: {
     static: {
       directory: path.join(__dirname, "public"),
