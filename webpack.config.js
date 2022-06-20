@@ -21,7 +21,12 @@ module.exports = {
         include: path.resolve(__dirname, 'src/scss'),
         use: [
           MiniCssExtract.loader,
-          "css-loader",
+          {
+            loader: 'css-loader',
+            options: {
+              url: true,
+            },
+          },
           {
             loader: "postcss-loader",
             options: {
@@ -41,7 +46,7 @@ module.exports = {
         generator:{
           // output setting
           // generate image in public
-          filename:'assets/images/[name][ext]',
+          filename:'assets/images/[name][ext][query]',
         }
       },
       {
