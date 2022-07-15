@@ -1,15 +1,20 @@
 $main_color: #b2b2b2;
 $sub_color: #FFFFFF;
 
-h1{
+h2,span{
 	color: $main_color;
-	padding:20px;
+	padding:5px 20px;
+}
+
+.layout-center{
+	margin-top: 150px;
+	text-align: center;
 }
 
 // @image Exsample
-// .test-img{
-// 	width: 1000px;
-// 	height: 1000px;
-// 	background:url('@image/exsampleImage');
-// 	background-size: cover;
-// }
+.img{
+	width: 200px;
+	height: 200px;
+	// background:url('@image/react-logo.png');
+	// background-size: cover;
+}

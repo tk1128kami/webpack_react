@@ -1,18 +1,19 @@
 const path = require('path');
 const MiniCssExtract = require('mini-css-extract-plugin');
 const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
 module.exports = {
   mode: 'development',
   entry: {
     // We can setting that multi entry point and create new folder By change entry name pattern Ex) "sample/bundle": './src/js/app.js'
-    bundle: './src/js/app.js',
-    style: './src/scss/style.scss',
+    bundle: './src/jsx/app.jsx',
   },
   output: {
-    path: path.resolve(__dirname, 'public'),
+    path: path.resolve(__dirname, 'build'),
     filename: 'assets/js/[name].js',
+    clean: true
   },
   module: {
     rules: [
@@ -25,6 +26,7 @@ module.exports = {
             loader: 'css-loader',
             options: {
               url: true,
+              // modules: true,
             },
           },
           {
@@ -42,6 +44,7 @@ module.exports = {
       },
       {
         test: /\.(png|jpe?g|gif|svg)$/i,
+        include: path.resolve(__dirname, 'src/images'),
         type: 'asset/resource',
         generator:{
           // output setting
@@ -50,8 +53,22 @@ module.exports = {
         }
       },
       {
-        test: /\.js$/,
-        include: path.resolve(__dirname, 'src/js'),
+				test: /\.html$/i,
+				loader: 'html-loader',
+			},
+      {
+        test: /\.(png|jpe?g|ico|gif|svg)$/i,
+        include: path.resolve(__dirname, 'public'),
+        type: 'asset/resource',
+        generator:{
+          // output setting
+          // generate image in public
+          filename:'[name][ext][query]',
+        }
+      },
+      {
+        test: /\.jsx$/,
+        include: path.resolve(__dirname, 'src/jsx'),
         use: [
           {
             loader: "babel-loader",
@@ -60,7 +77,6 @@ module.exports = {
             }
           }
         ]
-        
       }
     ]
   },
@@ -69,6 +85,9 @@ module.exports = {
       filename: "assets/css/[name].css"
     }),
     new RemoveEmptyScriptsPlugin(),
+    new HtmlWebpackPlugin({
+      template: './public/index.html'
+    }),
   ],
   resolve: {
 		alias: {
@@ -79,7 +98,7 @@ module.exports = {
 	},
   devServer: {
     static: {
-      directory: path.join(__dirname, "public"),
+      directory: path.join(__dirname, "build"),
     }
   }
 };
